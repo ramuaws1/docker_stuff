@@ -1,0 +1,71 @@
+Docker installation
+--------------------
+1.Sudo apt update
+2.sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+3.curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+4.sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+5.sudo apt update
+
+6.apt-cache policy docker-ce
+
+7.sudo apt install docker-ce
+
+8.sudo systemctl status docker
+
+to add users:
+1.sudo useradd sree
+2.sudo passwd sree
+3.cd /etc/ssh/
+4.sudo vi sshd_config
+5.passwordauthentication yes
+6.save and exit 
+7.sudo service sshd restart
+8.goto etc(cd ..)
+9.sudo vi sudoers
+10.under root
+   sree ALL=(All:ALL) ALL
+11.sudo service sshd restart
+12.come to root directory and let add user to docker group
+13.sudo usermod -aG docker sree(username)
+14.su sree
+15.bash
+16.id -nG
+17.docker (to display docker commands)
+18.docker info(to display docker info)
+19.goto google.co
+20.search dockerhub
+21.open https://hub.docker.com/
+22.create an account
+23.search for centos and pull centos
+24.goto ubuntu
+25.command:su username(ramu
+26.Password:
+27.bash
+28.here issue docker commands
+29.docker images
+30.issue command docker pull centos(till now we created image of centos on ubuntu server/machine)
+31.to work on centos on ubuntu server we need to convert the image into container)
+32.for converting image into container issue the below command
+:docker run -it centos(name of image)
+===========================================
+[note:docker commands will not work in 
+containters]
+===========================================
+33.to come out from docker issue press Ctnl+d or exit command.
+34.to know the existing docker container details issue command "docker ps -a"
+35.To start docker issue command
+    "docker start id/name of container"
+36.To stop docker issue command
+"docker stop id/name of container"
+37.to convert container into image issue commands
+"docker tag image_number name_with_version"
+"docker push name_with_version" by providing docker username and password.
+38.to create a docker file follow below steps
+   sudo vi Dockerfile
+   in the file type "FROM ubuntu
+                     RUN apt-get update"
+39.to build docker file use below commmand
+   sudo docker build -t name_of_image/version" .
